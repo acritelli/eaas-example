@@ -1,7 +1,7 @@
 name: "Install or update EAAS"
 on:
   push:
-    branches: [ demo/* ]
+    branches: [ demo ]
   workflow_dispatch:
 jobs:
   develop:
