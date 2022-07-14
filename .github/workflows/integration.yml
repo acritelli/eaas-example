@@ -2,6 +2,7 @@ name: "Install or update EAAS"
 on:
   push:
     branches: [ demo/* ]
+  workflow_dispatch:
 jobs:
   develop:
     runs-on: ubuntu-latest
