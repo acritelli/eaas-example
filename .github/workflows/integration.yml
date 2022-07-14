@@ -1,7 +1,7 @@
 name: "Install or update EAAS"
 on:
   push:
-    branches: [ develop/* ]
+    branches: [ demo/* ]
 jobs:
   develop:
     runs-on: ubuntu-latest
@@ -12,7 +12,7 @@ jobs:
         id: upload-blueprint
         uses: jrzeszutek/cli-action@v1.2.1
         with:
-          command: blueprints upload environments/eaas.yaml -b $EAAS_BLUEPRINT_ID -t default_tenant -l global
+          command: blueprints upload environments/eaas.yaml -b $EAAS_BLUEPRINT_ID -t default_tenant
       - name: Install or update EAAS
         uses: jrzeszutek/install-or-update-action@v1.2.1
         with:
@@ -23,12 +23,11 @@ jobs:
           labels: csys-obj-parent:$ENV_DEPLOYMENT_ID,csys-obj-type:environment
 env:
   EAAS_BLUEPRINT_ID: eaas-${{ github.run_id }}
-  EAAS_DEPLOYMENT_ID: eaas-prod
-  ENV_DEPLOYMENT_ID: azure
-  # ENV_DEPLOYMENT_ID: aws
+  EAAS_DEPLOYMENT_ID: eaas-demo
+  ENV_DEPLOYMENT_ID: aws
   CLOUDIFY_HOST: ${{ secrets.CLOUDIFY_HOST }}
   CLOUDIFY_USERNAME: ${{ secrets.CLOUDIFY_USERNAME }}
   CLOUDIFY_PASSWORD: ${{ secrets.CLOUDIFY_PASSWORD }}
-  CLOUDIFY_TENANT: PROD
+  CLOUDIFY_TENANT: default_tenant
   CLOUDIFY_SSL: ${{ secrets.CLOUDIFY_SSL }}
   CLOUDIFY_SSL_TRUST_ALL: ${{ secrets.CLOUDIFY_SSL_TRUST_ALL }}
