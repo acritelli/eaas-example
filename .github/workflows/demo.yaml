@@ -23,9 +23,9 @@ jobs:
           inputs-file: .github/inputs/inputs.yaml
           labels: csys-obj-parent:$ENV_DEPLOYMENT_ID,csys-obj-type:environment
 env:
-  EAAS_BLUEPRINT_ID: 67cf9b1f-854f-4f22-aecf-c2841862f2f2
-  EAAS_DEPLOYMENT_ID: eaas-demo
-  ENV_DEPLOYMENT_ID: 4bff09b6-4d6c-4984-8b56-48cc15df3f94
+  EAAS_BLUEPRINT_ID: eaas-${{ github.run_id }}
+  EAAS_DEPLOYMENT_ID: aws-dev
+  ENV_DEPLOYMENT_ID: aws
   CLOUDIFY_HOST: ${{ secrets.CLOUDIFY_HOST }}
   CLOUDIFY_USERNAME: ${{ secrets.CLOUDIFY_USERNAME }}
   CLOUDIFY_PASSWORD: ${{ secrets.CLOUDIFY_PASSWORD }}
